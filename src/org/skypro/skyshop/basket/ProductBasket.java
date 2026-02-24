@@ -18,20 +18,18 @@ public class ProductBasket {
             if (products[i] == null) {
                 products[i] = product;
                 break;
-            } else if (i == 4) {
+            } else if (i == products.length - 1) {
                 System.out.println("Невозможно добавить продукт");
             }
         }
 
     }
 
-    public int priceProductBasket() {
+    public int calculateTotalPrice() {
         int basketPrice = 0;
         for (int i = 0; i < products.length; i++) {
-            if (products[i] == null) {
-                basketPrice = basketPrice + 0;
-            } else {
-                basketPrice = basketPrice + products[i].getPrice();
+            if (products[i] != null) {
+                basketPrice += products[i].getPrice();
             }
         }
         return basketPrice;
@@ -47,10 +45,10 @@ public class ProductBasket {
             }
 
         }
-        if (j == 5) {
+        if (j == products.length - 1) {
             System.out.println("в корзине пусто");
         } else {
-            System.out.println("общая стоимость корзины: " + priceProductBasket());
+            System.out.println("общая стоимость корзины: " + calculateTotalPrice());
         }
     }
 
@@ -58,22 +56,19 @@ public class ProductBasket {
     public boolean checkProduct(Product product1) {
         boolean check = false;
         for (int i = 0; i < products.length; i++) {
-            if (products[i] == null) {
-                continue;
-            } else {
+            if (products[i] != null) {
                 if (products[i].equals(product1)) {
                     check = true;
                     break;
                 }
             }
-
         }
         return check;
     }
 
-        public void clearProductBasket () {
-            for (int i = 0; i < products.length; i++) {
-                products[i] = null;
-            }
+    public void clearProductBasket() {
+        for (int i = 0; i < products.length; i++) {
+            products[i] = null;
         }
     }
+}

@@ -20,11 +20,11 @@ public class App {
         Market.addProduct(product1);
         Market.addProduct(product2);
         Market.addProduct(product3);
-        Market.addProduct(product4);
+        //Market.addProduct(product4);
         Market.addProduct(product5);
-        Market.addProduct(product6);
+        //Market.addProduct(product6);
         System.out.println("проверка вычисления стоимости корзины");
-        System.out.println("стоимость продуктов в корзине = " + Market.priceProductBasket());
+        System.out.println("стоимость продуктов в корзине = " + Market. calculateTotalPrice());
 
         System.out.println("проверка печати содержимого корзины");
         Market.contentsProductBasket();
@@ -39,7 +39,7 @@ public class App {
         System.out.println("очистка корзины");
         Market.clearProductBasket();
         Market.contentsProductBasket();
-        System.out.println("стоимость продуктов в корзине = " + Market.priceProductBasket());
+        System.out.println("стоимость продуктов в корзине = " + Market. calculateTotalPrice());
         System.out.println("товар найден " + Market.checkProduct(product2));
 
 
