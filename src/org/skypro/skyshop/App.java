@@ -67,6 +67,7 @@ public class App {
         piece.add(article3);
         System.out.println(Arrays.toString(piece.Search ("Машинка")));
         System.out.println(Arrays.toString(piece.Search ("пароход")));
+        System.out.println(Arrays.toString(piece.Search ("Мотоцикл")));
 
 
 
