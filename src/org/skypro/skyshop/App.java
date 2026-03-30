@@ -66,6 +66,7 @@ public class App {
         piece.add(article2);
         piece.add(article3);
         System.out.println(Arrays.toString(piece.Search ("Машинка")));
+        System.out.println(Arrays.toString(piece.Search ("пароход")));
 
 
 

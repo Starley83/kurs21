@@ -11,13 +11,13 @@ public class SearchEngine {
         Searchable [] SearchResult =  new Searchable[5];
         int k=0;
         for (int i=0; i<item.length; i++) {
-            if (k==4) {
-                break;
-            }
             if (item[i] != null) {
                 if((item[i].searchTerm()).contains(searchItem)) {
                     SearchResult[k]= item[i];
                     k++;
+                    if (k==4) {
+                        break;
+                    }
                 }
             }
 
