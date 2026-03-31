@@ -11,8 +11,8 @@ public class Article implements Searchable{
 
     @Override
     public String toString() {
-        return "Статья: " + article+ '\'' +
-                "Содержание: " + articleText;
+        return "Статья: " + article +'\n'+
+                "Содержание:" + articleText;
     }
     @Override
     public String searchTerm() {
