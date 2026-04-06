@@ -21,28 +21,28 @@ public class App {
 
         try {
             Product defectProduct1 = new SimpleProduct("", 40);
-        } catch ( IllegalArgumentException e ) {
+        } catch (IllegalArgumentException e) {
             System.out.println("Ошибка ввода при создании продукта");
             e.printStackTrace();
         }
 
         try {
             Product defectProduct2 = new SimpleProduct("Zombi", -20);
-        } catch ( IllegalArgumentException e ) {
+        } catch (IllegalArgumentException e) {
             System.out.println("Ошибка ввода при создании продукта");
             e.printStackTrace();
         }
 
         try {
             Product defectProduct3 = new DiscountedProduct("prizrak", 40, 115);
-        } catch ( IllegalArgumentException e ) {
+        } catch (IllegalArgumentException e) {
             System.out.println("Ошибка ввода при создании продукта");
             e.printStackTrace();
         }
 
         try {
             Product defectProduct4 = new DiscountedProduct("prizrak2", -15, 40);
-        } catch ( IllegalArgumentException e ) {
+        } catch (IllegalArgumentException e) {
             System.out.println("Ошибка ввода при создании продукта");
             e.printStackTrace();
         }
@@ -52,7 +52,6 @@ public class App {
         Article article2 = new Article("F-16", "Самолет четвертого поколения");
         Article article3 = new Article("Корабль", "Титаник- самый быстрый пароход в атлантике");
         Article article4 = new Article("Машинка Жигули", "Машинка - для тех кто понимает: Машинка не средство роскоши, Машинка - это целая философия");
-
 
 
         System.out.println("проверка добавления в корзину продукта, проверка добавления шестого продукта");
@@ -96,23 +95,22 @@ public class App {
         piece.add(article2);
         piece.add(article3);
         piece.add(article4);
-        System.out.println(Arrays.toString(piece.Search ("Машинка")));
-        System.out.println(Arrays.toString(piece.Search ("пароход")));
-        System.out.println(Arrays.toString(piece.Search ("Мотоцикл")));
+        System.out.println(Arrays.toString(piece.Search("Машинка")));
+        System.out.println(Arrays.toString(piece.Search("пароход")));
+        System.out.println(Arrays.toString(piece.Search("Мотоцикл")));
         System.out.println("проверка работы поиска лучшего");
         try {
-            System.out.println((piece.SearchBest ("Машинка")));
-        } catch ( BestResultNotFound e) {
+            System.out.println((piece.SearchBest("Машинка")));
+        } catch (BestResultNotFound e) {
             System.out.println("Ошибка поиска лучшего");
             e.printStackTrace();
         }
         try {
-            System.out.println(piece.SearchBest ("Mersedes"));
-        } catch ( BestResultNotFound e) {
+            System.out.println(piece.SearchBest("Mersedes"));
+        } catch (BestResultNotFound e) {
             System.out.println("Ошибка поиска лучшего");
             e.printStackTrace();
         }
-
 
 
     }

@@ -1,7 +1,7 @@
 package org.skypro.skyshop.product;
 
 public class BestResultNotFound extends IllegalArgumentException {
-   private String Searchitem;
+    private String Searchitem;
 
     public BestResultNotFound(String searchitem) {
         Searchitem = searchitem;

@@ -1,21 +1,21 @@
 package org.skypro.skyshop.product;
 
 public class SearchEngine {
- Searchable[] item;
+    Searchable[] item;
 
-       public SearchEngine(int searchSize ) {
-       this.item = new Searchable[searchSize];
+    public SearchEngine(int searchSize) {
+        this.item = new Searchable[searchSize];
     }
 
-    public Searchable[] Search (String searchItem) {
-        Searchable [] SearchResult =  new Searchable[5];
-        int k=0;
-        for (int i=0; i<item.length; i++) {
+    public Searchable[] Search(String searchItem) {
+        Searchable[] SearchResult = new Searchable[5];
+        int k = 0;
+        for (int i = 0; i < item.length; i++) {
             if (item[i] != null) {
-                if((item[i].searchTerm()).contains(searchItem)) {
-                    SearchResult[k]= item[i];
+                if ((item[i].searchTerm()).contains(searchItem)) {
+                    SearchResult[k] = item[i];
                     k++;
-                    if (k==4) {
+                    if (k == 4) {
                         break;
                     }
                 }
@@ -37,30 +37,30 @@ public class SearchEngine {
 
     }
 
-    public Searchable SearchBest (String searchItem) {
+    public Searchable SearchBest(String searchItem) {
         Searchable searchResult = null;
-        int k=0;
-        int j=0;
-        for (int i=0; i<item.length; i++) {
+        int k = 0;
+        int j = 0;
+        for (int i = 0; i < item.length; i++) {
             if (item[i] != null) {
-                if((item[i].searchTerm()).contains(searchItem)) {
+                if ((item[i].searchTerm()).contains(searchItem)) {
                     int count = 0;
                     int index = 0;
                     int indexOfSubstring = item[i].searchTerm().indexOf(searchItem, index);
 
-                    while(indexOfSubstring != -1){
+                    while (indexOfSubstring != -1) {
                         count++;
                         index = indexOfSubstring + searchItem.length();
                         indexOfSubstring = item[i].searchTerm().indexOf(searchItem, index);
                     }
-                    if (k<count) {
-                        k=count;
-                        j=i;
+                    if (k < count) {
+                        k = count;
+                        j = i;
                     }
                 }
             }
         }
-        if (k>0) {
+        if (k > 0) {
             searchResult = item[j];
         } else {
             throw new BestResultNotFound(searchItem);
