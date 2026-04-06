@@ -9,7 +9,7 @@ import java.util.Arrays;
 public class App {
     public static void main(String[] args) {
         ProductBasket Market = new ProductBasket("user1");
-        SearchEngine piece = new SearchEngine(9);
+        SearchEngine piece = new SearchEngine(12);
 
 
         Product product1 = new SimpleProduct("Машинка", 100);
@@ -19,9 +19,39 @@ public class App {
         Product product5 = new DiscountedProduct("Самолетик", 120, 10);
         Product product6 = new SimpleProduct("Трактор", 80);
 
+        try {
+            Product defectProduct1 = new SimpleProduct("", 40);
+        } catch ( IllegalArgumentException e ) {
+            System.out.println("Ошибка ввода при создании продукта");
+            e.printStackTrace();
+        }
+
+        try {
+            Product defectProduct2 = new SimpleProduct("Zombi", -20);
+        } catch ( IllegalArgumentException e ) {
+            System.out.println("Ошибка ввода при создании продукта");
+            e.printStackTrace();
+        }
+
+        try {
+            Product defectProduct3 = new DiscountedProduct("prizrak", 40, 115);
+        } catch ( IllegalArgumentException e ) {
+            System.out.println("Ошибка ввода при создании продукта");
+            e.printStackTrace();
+        }
+
+        try {
+            Product defectProduct4 = new DiscountedProduct("prizrak2", -15, 40);
+        } catch ( IllegalArgumentException e ) {
+            System.out.println("Ошибка ввода при создании продукта");
+            e.printStackTrace();
+        }
+
+
         Article article1 = new Article("BMW", "Машинка - Модель BMW 5й серии");
         Article article2 = new Article("F-16", "Самолет четвертого поколения");
         Article article3 = new Article("Корабль", "Титаник- самый быстрый пароход в атлантике");
+        Article article4 = new Article("Машинка Жигули", "Машинка - для тех кто понимает: Машинка не средство роскоши, Машинка - это целая философия");
 
 
 
@@ -65,10 +95,23 @@ public class App {
         piece.add(article1);
         piece.add(article2);
         piece.add(article3);
+        piece.add(article4);
         System.out.println(Arrays.toString(piece.Search ("Машинка")));
         System.out.println(Arrays.toString(piece.Search ("пароход")));
         System.out.println(Arrays.toString(piece.Search ("Мотоцикл")));
-
+        System.out.println("проверка работы поиска лучшего");
+        try {
+            System.out.println((piece.SearchBest ("Машинка")));
+        } catch ( BestResultNotFound e) {
+            System.out.println("Ошибка поиска лучшего");
+            e.printStackTrace();
+        }
+        try {
+            System.out.println(piece.SearchBest ("Mersedes"));
+        } catch ( BestResultNotFound e) {
+            System.out.println("Ошибка поиска лучшего");
+            e.printStackTrace();
+        }
 
 
 

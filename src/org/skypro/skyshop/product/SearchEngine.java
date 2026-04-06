@@ -37,5 +37,36 @@ public class SearchEngine {
 
     }
 
+    public Searchable SearchBest (String searchItem) {
+        Searchable searchResult = null;
+        int k=0;
+        int j=0;
+        for (int i=0; i<item.length; i++) {
+            if (item[i] != null) {
+                if((item[i].searchTerm()).contains(searchItem)) {
+                    int count = 0;
+                    int index = 0;
+                    int indexOfSubstring = item[i].searchTerm().indexOf(searchItem, index);
+
+                    while(indexOfSubstring != -1){
+                        count++;
+                        index = indexOfSubstring + searchItem.length();
+                        indexOfSubstring = item[i].searchTerm().indexOf(searchItem, index);
+                    }
+                    if (k<count) {
+                        k=count;
+                        j=i;
+                    }
+                }
+            }
+        }
+        if (k>0) {
+            searchResult = item[j];
+        } else {
+            throw new BestResultNotFound(searchItem);
+        }
+        return searchResult;
+    }
+
 
 }
