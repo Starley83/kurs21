@@ -37,7 +37,7 @@ public class SearchEngine {
 
     }
 
-    public Searchable SearchBest(String searchItem) {
+    public Searchable SearchBest(String searchItem) throws BestResultNotFound {
         Searchable searchResult = null;
         int k = 0;
         int j = 0;
@@ -62,7 +62,8 @@ public class SearchEngine {
         }
         if (k > 0) {
             searchResult = item[j];
-        } else {
+        }
+        if (searchResult==null) {
             throw new BestResultNotFound(searchItem);
         }
         return searchResult;

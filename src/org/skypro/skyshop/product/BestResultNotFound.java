@@ -1,14 +1,14 @@
 package org.skypro.skyshop.product;
 
-public class BestResultNotFound extends IllegalArgumentException {
-    private String Searchitem;
+public class BestResultNotFound extends Exception {
+    private String SearchItem;
 
-    public BestResultNotFound(String searchitem) {
-        Searchitem = searchitem;
+    public BestResultNotFound(String searchItem) {
+        SearchItem = searchItem;
     }
 
     @Override
     public String toString() {
-        return "не найден объект" + Searchitem;
+        return "для запроса " + SearchItem + " не нашлось подходящего результата";
     }
 }
