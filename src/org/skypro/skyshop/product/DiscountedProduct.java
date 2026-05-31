@@ -24,7 +24,7 @@ public class DiscountedProduct extends Product {
 
     @Override
     public String toString() {
-        return "имя продукта: " + getName() + " стоимость " + getPrice() + " (скидка: " + discount + " )";
+        return "имя продукта: " + getName() + " стоимость " + getPrice() + " (скидка: " + discount + " )" + '\n';
     }
 
     public boolean isSpecial() {

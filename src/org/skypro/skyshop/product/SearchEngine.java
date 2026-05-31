@@ -1,23 +1,22 @@
 package org.skypro.skyshop.product;
 
-public class SearchEngine {
-    Searchable[] item;
+import java.util.LinkedList;
+import java.util.List;
 
-    public SearchEngine(int searchSize) {
-        this.item = new Searchable[searchSize];
+public class SearchEngine {
+    private List<Searchable> item;
+
+    public SearchEngine() {
+        this.item = new LinkedList<>();
+        ;
     }
 
-    public Searchable[] Search(String searchItem) {
-        Searchable[] SearchResult = new Searchable[5];
-        int k = 0;
-        for (int i = 0; i < item.length; i++) {
-            if (item[i] != null) {
-                if ((item[i].searchTerm()).contains(searchItem)) {
-                    SearchResult[k] = item[i];
-                    k++;
-                    if (k == 4) {
-                        break;
-                    }
+    public List<Searchable> Search(String searchItem) {
+        List<Searchable> SearchResult = new LinkedList<>();
+        for (int i = 0; i < item.size(); i++) {
+            if (item.get(i) != null) {
+                if ((item.get(i).searchTerm()).contains(searchItem)) {
+                    SearchResult.add(item.get(i));
                 }
             }
 
@@ -26,13 +25,8 @@ public class SearchEngine {
     }
 
     public void add(Searchable item2) {
-        for (int i = 0; i < item.length; i++) {
-            if (item[i] == null) {
-                item[i] = item2;
-                break;
-            } else if (i == item.length - 1) {
-                System.out.println("движок поиска переполнен");
-            }
+        {
+            item.add(item2);
         }
 
     }
@@ -41,17 +35,17 @@ public class SearchEngine {
         Searchable searchResult = null;
         int k = 0;
         int j = 0;
-        for (int i = 0; i < item.length; i++) {
-            if (item[i] != null) {
-                if ((item[i].searchTerm()).contains(searchItem)) {
+        for (int i = 0; i < item.size(); i++) {
+            if (item.get(i) != null) {
+                if ((item.get(i).searchTerm()).contains(searchItem)) {
                     int count = 0;
                     int index = 0;
-                    int indexOfSubstring = item[i].searchTerm().indexOf(searchItem, index);
+                    int indexOfSubstring = item.get(i).searchTerm().indexOf(searchItem, index);
 
                     while (indexOfSubstring != -1) {
                         count++;
                         index = indexOfSubstring + searchItem.length();
-                        indexOfSubstring = item[i].searchTerm().indexOf(searchItem, index);
+                        indexOfSubstring = item.get(i).searchTerm().indexOf(searchItem, index);
                     }
                     if (k < count) {
                         k = count;
@@ -61,13 +55,11 @@ public class SearchEngine {
             }
         }
         if (k > 0) {
-            searchResult = item[j];
+            searchResult = item.get(j);
         }
-        if (searchResult==null) {
+        if (searchResult == null) {
             throw new BestResultNotFound(searchItem);
         }
         return searchResult;
     }
-
-
 }

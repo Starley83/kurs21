@@ -9,7 +9,7 @@ import java.util.Arrays;
 public class App {
     public static void main(String[] args) {
         ProductBasket Market = new ProductBasket("user1");
-        SearchEngine piece = new SearchEngine(12);
+        SearchEngine piece = new SearchEngine();
 
 
         Product product1 = new SimpleProduct("Машинка", 100);
@@ -74,6 +74,12 @@ public class App {
         System.out.println("проверка поиска продукта отсутствие " + product6);
         System.out.println("товар найден " + Market.checkProduct(product6));
 
+        System.out.println("проверка удаления продукта");
+        Market.deleteProduct("Кораблик");
+
+        System.out.println("проверка удаления несуществующего продукта");
+        Market.deleteProduct("Вагончик");
+
         System.out.println("очистка корзины");
         Market.clearProductBasket();
         Market.contentsProductBasket();
@@ -95,9 +101,9 @@ public class App {
         piece.add(article2);
         piece.add(article3);
         piece.add(article4);
-        System.out.println(Arrays.toString(piece.Search("Машинка")));
-        System.out.println(Arrays.toString(piece.Search("пароход")));
-        System.out.println(Arrays.toString(piece.Search("Мотоцикл")));
+        System.out.println(piece.Search("Машинка"));
+        System.out.println(piece.Search("пароход"));
+        System.out.println(piece.Search("Мотоцикл"));
         System.out.println("проверка работы поиска лучшего");
         try {
             System.out.println((piece.SearchBest("Машинка")));

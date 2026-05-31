@@ -12,7 +12,7 @@ public class Article implements Searchable {
     @Override
     public String toString() {
         return "Статья: " + article + '\n' +
-                "Содержание:" + articleText;
+                "Содержание:" + articleText + '\n';
     }
 
     @Override
