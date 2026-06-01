@@ -14,7 +14,7 @@ public class FixPriceProduct extends Product {
 
     @Override
     public String toString() {
-        return "имя продукта: " + getName() + " фиксированная цена " + FIXED_PRICE;
+        return "имя продукта: " + getName() + " фиксированная цена " + FIXED_PRICE + '\n';
     }
 
     public boolean isSpecial() {
